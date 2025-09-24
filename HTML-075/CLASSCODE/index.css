@@ -1,0 +1,27 @@
+html{
+    color:white;
+}
+h1{
+    color: blue;
+}
+h2{
+    color: green;
+}
+p{
+    background-color:lightgreen;
+}
+body{
+    background-color: #c7d75a;
+}
+section{
+    background-color: rgba(255, 99, 71, 0.5);
+    width: 300px;
+    height: 300px;
+}
+#test{
+    background-color: yellow;
+}
+.sample{
+    background-color: orange;
+}
+

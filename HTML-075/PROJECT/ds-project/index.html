@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Series Anomaly Detection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/csv-parser@3.0.0/browser/index.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        input[type="file"] {
+            border: 2px dashed #94a3b8;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="container p-4">
+        <h1 class="text-4xl font-bold text-center mb-6 text-slate-800">Time Series Anomaly Detector</h1>
+        <div class="card space-y-6">
+            <p class="text-center text-gray-600">Upload a CSV file with two columns: a timestamp and a numerical value. We will detect and visualize anomalies.</p>
+
+            <!-- File Upload Section -->
+            <div class="space-y-4">
+                <label for="file-upload" class="block text-sm font-medium text-gray-700">Upload your CSV file</label>
+                <input type="file" id="file-upload" accept=".csv" class="cursor-pointer">
+                <p id="file-status" class="text-sm text-center text-gray-500"></p>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="mt-8 hidden">
+                <h2 class="text-2xl font-semibold mb-4 text-center">Data Analysis Dashboard</h2>
+                
+                <!-- Summary Statistics -->
+                <div class="flex justify-around items-center mb-6">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                        <p class="text-sm text-gray-500">Total Data Points</p>
+                        <p id="total-points" class="text-2xl font-bold text-blue-600"></p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                        <p class="text-sm text-gray-500">Anomalies Detected</p>
+                        <p id="anomaly-count" class="text-2xl font-bold text-red-600"></p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Chart Section -->
+                    <div class="card p-4">
+                        <h3 class="text-xl font-semibold mb-4 text-center">Time Series Plot</h3>
+                        <div id="chart-container">
+                            <canvas id="anomalyChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Anomaly Details -->
+                    <div class="card p-4">
+                        <h3 class="text-xl font-semibold mb-4 text-center">Detected Anomalies</h3>
+                        <ul id="anomaly-list" class="list-disc pl-5 text-gray-700 max-h-80 overflow-y-auto"></ul>
+                        <p id="no-anomalies" class="text-center text-gray-500 hidden mt-4">No significant anomalies were detected.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fileInput = document.getElementById('file-upload');
+            const fileStatus = document.getElementById('file-status');
+            const dashboard = document.getElementById('dashboard');
+            const totalPointsEl = document.getElementById('total-points');
+            const anomalyCountEl = document.getElementById('anomaly-count');
+            const anomalyList = document.getElementById('anomaly-list');
+            const noAnomalies = document.getElementById('no-anomalies');
+            let anomalyChart;
+
+            fileInput.addEventListener('change', handleFileUpload);
+
+            function handleFileUpload(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    fileStatus.textContent = `File selected: ${file.name}`;
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const csvText = e.target.result;
+                        processCSV(csvText);
+                    };
+                    reader.readAsText(file);
+                }
+            }
+
+            function processCSV(csvText) {
+                const results = Papa.parse(csvText, {
+                    header: false,
+                    skipEmptyLines: true,
+                });
+
+                if (results.data.length < 2) {
+                    fileStatus.textContent = 'Error: CSV file must have at least one row of data.';
+                    return;
+                }
+
+                // Assuming the first two columns are time and value
+                const labels = results.data.slice(1).map(row => row[0]);
+                const dataPoints = results.data.slice(1).map(row => parseFloat(row[1]));
+
+                if (labels.some(label => !label) || dataPoints.some(dp => isNaN(dp))) {
+                    fileStatus.textContent = 'Error: CSV data format is incorrect. Ensure the first column is a label and the second is a number.';
+                    return;
+                }
+
+                // Simple Anomaly Detection using IQR (Interquartile Range)
+                const sortedData = [...dataPoints].sort((a, b) => a - b);
+                const q1 = sortedData[Math.floor(sortedData.length / 4)];
+                const q3 = sortedData[Math.ceil(sortedData.length * 3 / 4)];
+                const iqr = q3 - q1;
+                const lowerBound = q1 - 1.5 * iqr;
+                const upperBound = q3 + 1.5 * iqr;
+
+                const anomalies = [];
+                const anomalyPoints = [];
+                const normalPoints = [];
+
+                dataPoints.forEach((value, index) => {
+                    if (value < lowerBound || value > upperBound) {
+                        anomalies.push({ index, value, timestamp: labels[index] });
+                        anomalyPoints.push({ x: index, y: value });
+                        normalPoints.push({ x: index, y: NaN }); // Keep this as NaN to not draw a line
+                    } else {
+                        anomalyPoints.push({ x: index, y: NaN });
+                        normalPoints.push({ x: index, y: value });
+                    }
+                });
+                
+                renderChart(labels, normalPoints, anomalyPoints);
+                updateDashboard(dataPoints, anomalies);
+                dashboard.classList.remove('hidden');
+            }
+
+            function renderChart(labels, normalData, anomalyData) {
+                if (anomalyChart) {
+                    anomalyChart.destroy();
+                }
+
+                const ctx = document.getElementById('anomalyChart').getContext('2d');
+                anomalyChart = new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Normal Data',
+                                data: normalData,
+                                borderColor: 'rgb(75, 192, 192)',
+                                backgroundColor: 'rgb(75, 192, 192, 0.5)',
+                                type: 'line',
+                                pointRadius: 0,
+                                fill: false,
+                            },
+                            {
+                                label: 'Anomalies',
+                                data: anomalyData,
+                                backgroundColor: 'rgb(255, 99, 132)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                pointRadius: 5,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'category',
+                                title: {
+                                    display: true,
+                                    text: 'Time Series Index'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Value'
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += `Value: ${context.parsed.y}`;
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function updateDashboard(dataPoints, anomalies) {
+                totalPointsEl.textContent = dataPoints.length;
+                anomalyCountEl.textContent = anomalies.length;
+
+                anomalyList.innerHTML = '';
+                if (anomalies.length > 0) {
+                    anomalies.forEach(anomaly => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `Index: ${anomaly.index}, Timestamp: ${anomaly.timestamp}, Value: ${anomaly.value.toFixed(2)}`;
+                        anomalyList.appendChild(listItem);
+                    });
+                    noAnomalies.classList.add('hidden');
+                } else {
+                    noAnomalies.classList.remove('hidden');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
