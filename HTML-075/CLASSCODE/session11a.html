@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript</title>
+    <script>
+      document.write("Welcome to the Digital World");
+    </script>
+  </head>
+  <body>
+    <script>
+      console.log("WELCOME TO JAVASCRIPT CLASS");
+    </script>
+    <script>
+      alert("HOW ARE YOU JAVASCRIPT");
+    </script>
+
+    <p id="test"></p>
+    <br />
+    <p id="test2">first statement</p>
+    <br />
+
+    <p id="test3"></p>
+    <p id="test4"></p>
+    <p id="test5"></p>
+    <p id="test6"></p>
+    <p id="test7"></p>
+    <p id="test8"></p>
+
+    <script>
+      document.getElementById("test").innerHTML = "welcome to aptech !!!!";
+      function myfun() {
+        document.getElementById("test2").innerHTML = "second statement !!!!";
+      }
+      function ans() {
+        a = 10;
+        b = 20;
+        // c = a + b;
+        document.getElementById("test3").innerHTML = c = a + b;
+      }
+      let firstnum = Number(prompt("enter the first number:  "));
+
+      let secondnum = Number(prompt("enter the second number: "));
+
+      function result() {
+        document.getElementById("test4").innerHTML = firstnum + secondnum;
+        document.getElementById("test5").innerHTML = firstnum / secondnum;
+        document.getElementById("test6").innerHTML = firstnum * secondnum;
+        document.getElementById("test7").innerHTML = firstnum - secondnum;
+        document.getElementById("test8").innerHTML = firstnum % secondnum;
+      }
+    </script>
+    <button onclick="result()">result</button>
+    <br />
+    <button onclick="ans()">add</button>
+    <br />
+    <button onclick="myfun()">click to change value</button>
+  </body>
+</html>
