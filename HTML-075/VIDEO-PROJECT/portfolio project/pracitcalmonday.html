@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset some default styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #121212;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      header {
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      header img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 20px;
+      }
+
+      header h1 {
+        font-size: 36px;
+        margin: 10px 0;
+      }
+
+      header p {
+        font-size: 18px;
+        color: #bbb;
+      }
+
+      .skills {
+        display: flex;
+        justify-content: center;
+        margin: 50px 0;
+      }
+
+      .skill {
+        margin: 0 20px;
+        text-align: center;
+      }
+
+      .skill img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+      }
+
+      .skill p {
+        font-size: 16px;
+        color: #bbb;
+      }
+
+      .progress-bar {
+        background-color: #333;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+        height: 10px;
+        margin-top: 10px;
+      }
+
+      .progress {
+        height: 100%;
+        background-color: #00b894;
+      }
+
+      .education {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px 20px;
+      }
+
+      .edu-item {
+        background-color: #2d2d2d;
+        border-radius: 10px;
+        padding: 20px;
+        width: 23%;
+        color: #fff;
+      }
+
+      .edu-item h3 {
+        margin-bottom: 10px;
+      }
+
+      .edu-item p {
+        font-size: 14px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+      }
+
+      footer a {
+        color: #00b894;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <img src="profile-pic.jpg" alt="Profile Picture" />
+      <h1>John Doe</h1>
+      <p>Web Developer | JavaScript Enthusiast | React Specialist</p>
+      <a href="cv.pdf" class="download-btn">Download CV</a>
+    </header>
+
+    <!-- Skills Section -->
+    <section class="skills">
+      <div class="skill">
+        <img src="html-logo.png" alt="HTML" />
+        <p>HTML</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 98%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="css-logo.png" alt="CSS" />
+        <p>CSS</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 98%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="js-logo.png" alt="JavaScript" />
+        <p>JavaScript</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 98%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="nodejs-logo.png" alt="Node.js" />
+        <p>Node.js</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 98%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="react-logo.png" alt="React" />
+        <p>React</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 98%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+      <div class="edu-item">
+        <h3>2000-2002</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="edu-item">
+        <h3>2002-2004</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="edu-item">
+        <h3>2004-2006</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="edu-item">
+        <h3>2006-2008</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>© 2025 John Doe. All rights reserved.</p>
+      <a href="mailto:contact@johndoe.com">Contact</a>
+    </footer>
+  </body>
+</html>

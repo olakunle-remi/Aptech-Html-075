@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>session13c-- canvas</title>
+    <link rel="stylesheet" href="session4.css" />
+    <style>
+      #mCanvas {
+        border: 1px solid black;
+      }
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById("mCanvas");
+        var ctext = canvas.getContext("2d");
+        var ctrx = canvas.width / 2;
+        var ctry = canvas.heigth / 2;
+        var radius = 70;
+        ctext.beginPath();
+        ctext.arc(ctrx, ctry, radius, 0, 2 * Math.PI, false);
+        ctext.fillStle = "DarkOrchid";
+        ctext.fill();
+        ctext.lineWidth = 4;
+        ctext.strokeStyle = "DarkGreen";
+        ctext.stroke();
+      };
+    </script>
+  </head>
+  <body>
+    <canvas id="mCanvas" width="278" height="200"></canvas>
+  </body>
+</html>

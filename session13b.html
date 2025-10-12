@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>session13c-- canvas</title>
+    <link rel="stylesheet" href="session4.css" />
+    <style>
+      body{
+        margin: 0px;
+        padding: 0px;
+      }
+      #mCanvas{
+        border: 1px slid red;
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById("mCanvas");
+        var ctext = canvas.getContext("2d");
+        ctext.beginPath();
+        ctext.moveTo(100, 150);
+         ctext.lineTo(250, 50);
+        ctext.lineWidth =5;
+        ctext.strockstyle = "blue";
+        ctext.fill();
+      };
+    </script>
+  </head>
+  <body>
+    <canvas id="mCanvas" width="360" height="200"></canvas>
+  </body>
+</html>

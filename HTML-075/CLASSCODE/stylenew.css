@@ -1,0 +1,27 @@
+
+.banner{
+  text-align: center;
+  background: #C0C0C0;
+  border-style: solid;
+  border-left-style:none;
+  border-top-width: thick;
+  border-bottom-width: thick;
+  font-family: fantasy;
+}
+.aboutus{
+  background-color: #FFFFCC;
+  text-align:justify;
+  border-style: solid;
+  border-width: thick thin thick thin;
+
+}
+.impnote{
+  background-color:#FFFFCC; 
+  border-top:dashed thin #FF0000;
+  border-bottom: ridge thick #0000FF;
+  border-right: dotted thin #ff8040;
+  border-left:inset medium #FF00FF;
+}
+ul{
+  list-style: square;
+}

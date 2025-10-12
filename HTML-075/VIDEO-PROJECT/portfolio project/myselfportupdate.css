@@ -1,0 +1,190 @@
+
+
+      body {
+        background-color: black;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background-color: darkslateblue;
+        padding: 10px;
+        color: white;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bolder;
+      }
+      .top {
+        width: 100%;
+        height: inherit;
+        display: flex;
+        margin-top: 30px;
+        margin-left: 70px;
+      }
+
+      .box1 {
+        margin-left: 60px;
+        line-height: 1.6rem;
+        position: relative;
+        object-fit: cover;
+      }
+      .box1 img {
+        border-radius: 10px;
+        flex-direction: column;
+      }
+      .box1 button {
+        position: absolute;
+        top: 90%;
+        left: 15%;
+        width: 200px;
+        height: 40px;
+        border-radius: 20px;
+
+        font-size: 20px;
+        background-color: black;
+        color: white;
+      }
+      .box1 button:hover {
+        background-color: darkslateblue;
+      }
+
+      .box2 {
+        color: black;
+        font-size: 20px;
+        padding: 20px;
+        text-align: justify;
+        margin-right: 50px;
+      }
+      .box2 p {
+        line-height: 1.6rem;
+        color: white;
+      }
+/* Main container for the section */
+.mid {
+  margin-top: 50px;
+  background-color: #fce4ec; /* Soft pink background for the section */
+  width: 100%;
+  padding: 50px 10px;
+  box-sizing: border-box;
+}
+
+/* Title of the section */
+.mid h1 {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Flexbox container for skill cards */
+.skills {
+  display: flex;
+  flex-wrap: wrap; /* Allow the cards to wrap to the next line */
+  gap: 30px; /* Space between the cards */
+  justify-content: center; /* Center the cards horizontally */
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Individual skill card */
+.skill {
+  width: 300px; /* Adjusted to make cards smaller */
+  height: 350px; /* Adjusted height */
+  background-color: #4CAF50; /* Default background color */
+  background-image: url('your-image-url.jpg'); /* Add your image URL */
+  background-size: cover; /* Ensure the image covers the entire card */
+  background-position: center; /* Center the background image */
+  background-blend-mode: overlay; /* Adjust blending mode */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Hide overflowed content */
+  position: relative; /* For circle positioning */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the skill card */
+.skill:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Circle for percentage */
+.circle {
+  width: 90px; /* Size of the circle */
+  height: 90px;
+  border-radius: 50%; /* Make it circular */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px; /* Text size inside the circle */
+  color: #4CAF50; /* Text color */
+  border: 5px solid #4CAF50; /* Green border */
+  position: absolute;
+  top: 15px; /* Distance from the top */
+  left: 50%;
+  transform: translateX(-50%); /* Center the circle horizontally */
+}
+
+/* Skill text below the circle */
+.skill h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-transform: capitalize;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .skills {
+    gap: 20px;
+  }
+
+  .skill {
+    width: 250px;
+    height: 300px;
+  }
+
+  .circle {
+    width: 70px;
+    height: 70px;
+    font-size: 14px;
+  }
+
+  .skill h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    gap: 15px;
+  }
+
+  .skill {
+    width: 200px;
+    height: 250px;
+  }
+
+  .circle {
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+  }
+
+  .skill h3 {
+    font-size: 16px;
+  }
+}

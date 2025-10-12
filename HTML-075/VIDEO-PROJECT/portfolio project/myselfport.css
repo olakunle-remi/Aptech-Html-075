@@ -1,0 +1,157 @@
+
+      body {
+        background-color: black;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background-color: darkslateblue;
+        padding: 10px;
+        color: white;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bolder;
+      }
+      .top {
+        width: 100%;
+        height: inherit;
+        display: flex;
+        margin-top: 30px;
+        margin-left: 70px;
+      }
+
+      .box1 {
+        margin-left: 60px;
+        line-height: 1.6rem;
+        position: relative;
+        object-fit: cover;
+      }
+      .box1 img {
+        border-radius: 10px;
+        flex-direction: column;
+      }
+      .box1 button {
+        position: absolute;
+        top: 90%;
+        left: 15%;
+        width: 200px;
+        height: 40px;
+        border-radius: 20px;
+
+        font-size: 20px;
+        background-color: black;
+        color: white;
+      }
+      .box1 button:hover {
+        background-color: darkslateblue;
+      }
+
+      .box2 {
+        color: black;
+        font-size: 20px;
+        padding: 20px;
+        text-align: justify;
+        margin-right: 50px;
+      }
+      .box2 p {
+        line-height: 1.6rem;
+        color: white;
+      }
+      .mid {
+        margin-top: 50px;
+       
+        background-color: pink;
+        width:100%;
+      }
+   .mid h1{
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    color: white;
+   }
+   /*.skills{
+  
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+   
+   
+   } 
+    .skill{
+      background-color: darkslateblue;
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      font-size: 20px;
+      width: 400px;
+      height: 300px;
+      display: flex;
+      text-align: center;
+    } */
+  .skills {
+  display: flex;
+  flex-wrap: wrap; /* Allow the cards to wrap to the next line */
+  gap: 20px; /* Space between the cards */
+  justify-content: flex-start; /* Center the cards horizontally */
+  align-items: flex-start;
+}
+.skill {
+  width: 400px;
+  height: 300px;
+  background-color: #4CAF50; /* Default background color */
+  background-image: url('your-image-url.jpg'); /* Add your image URL */
+  background-size: cover; /* Ensure the image covers the entire card */
+  background-blend-mode: overlay; /* Adjust the blending mode (can experiment with others like 'screen', 'multiply', etc.) */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+
+/*.skill{
+  width: 400px;
+  height: 300px;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+}*/
+
+.skills > .skill:nth-child(1),
+.skills > .skill:nth-child(2),
+.skills > .skill:nth-child(3) {
+  /* The first three cards will stay in the top row */
+  flex: 0 0 400px; /* Allow flexibility but ensure they have at least 400px width */
+}
+
+.skills > .skill:nth-child(4),
+.skills > .skill:nth-child(5) {
+  /* The last two cards should be beside each other in the second row */
+  flex: 0 0 400px; /* Same as above: each will take up 400px width */
+}
+
+.circle {
+  width: 100px; /* Size of the circle */
+  height: 100px;
+  border-radius: 50%; /* Make it circular */
+  background-color: #ffffff; /* Background color of the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px; /* Text size inside the circle */
+  color: #4CAF50; /* Text color */
+  border: 5px solid #4CAF50; /* Border to give a distinct outline */
+  position: absolute;
+}
