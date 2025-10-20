@@ -66,6 +66,9 @@
        
         background-color: pink;
         width:100%;
+        flex-grow: 1;
+        flex-shrink:1;
+        flex-basis: auto;
       }
    .mid h1{
     text-align: center;

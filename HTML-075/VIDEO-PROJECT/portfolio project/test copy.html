@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap; /* Allow the cards to wrap to the next line */
+      gap: 20px; /* Space between the cards */
+      justify-content: flex-start; /* Center the cards horizontally */
+      align-items: flex-start;
+      padding: 0px;
+      margin: 0px;
+    }
+    .inner {
+      width: 500px;
+
+      background-color: #4caf50; /* Default background color */
+      /* Add your image URL */ /* Ensure the image covers the entire card */
+      height: 300px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 18px;
+      top: 30px;
+      margin: 0px;
+      padding: 0px;
+      gap: 0px;
+    }
+    .inner img,
+    .inner h1,
+    .inner p {
+      margin: 0px;
+      padding: 0px;
+    }
+    .wrapper > .inner:nth-child(1),
+    .wrapper > .inner:nth-child(2),
+    .wrapper > .inner:nth-child(3) {
+      /* The first three cards will stay in the top row */
+      flex: 0 0 400px; /* Allow flexibility but ensure they have at least 400px width */
+    }
+
+    .wrapper > .inner:nth-child(4),
+    .wrapper > .inner:nth-child(5) {
+      /* The last two cards should be beside each other in the second row */
+      flex: 0 0 400px; /* Same as above: each will take up 400px width */
+    }
+  </style>
+
+  <body>
+    <div class="wrapper">
+      <div class="inner">
+        <img src="images/html.png" width="200" height="200" alt="" />
+        <h1>html</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,
+          ducimus?
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
