@@ -1,0 +1,60 @@
+import React from 'react';
+import Header from './component/Header';
+import Box  from './component/Box';
+import UserProfile from './component/UserProfile';
+import Welcome  from './component/Welcome';
+import User from './component/User';
+
+function ClickMe(){
+  return <button onClick={()=>console.log("Clicked 👆")}>Click me</button> 
+}
+function App() {
+  return (
+    <div className="App">
+      <Header />
+      <Box />
+      <UserProfile />
+      <Welcome />
+      <User />
+      <ClickMe />
+     
+    </div>
+  );
+}
+
+
+
+
+==========================================================================
+import React, { useState } from "react";
+import "./App.css";
+
+function ClickMe() {
+  //  Define an initial value (e.g., 0 or an empty string)
+  const [state, setState] = useState(0);
+
+  const onUserClick = () => {
+    console.log("clicked ☝");
+    setState(state + 1); // Example: update state to show usage
+  };
+
+  return (
+    <button className="btn" onClick={onUserClick}>
+      Click me ({state})
+    </button>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <ClickMe />
+    </div>
+  );
+}
+
+export default App;
+==================================================================
+
+
+export default App;

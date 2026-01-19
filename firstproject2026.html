@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>profile section</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        background-color: lightgray;
+        height: 100vh;
+        margin-top: 30px;
+      }
+      section {
+        width: 80%;
+        height: 80%;
+        margin: auto;
+        background-color: dodgerblue;
+      }
+      header {
+        align-items: center;
+        padding: 10px;
+        background-color: navy;
+        color: white;
+      }
+      header .logo {
+        display: flex;
+        align-items: center;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        margin: 0 15px;
+        /* margin-top: 10px;
+        padding: 10px;*/
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bolder;
+      }
+
+      .con {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 50%;
+      }
+      .bio,
+      .skill {
+        width: 40%;
+        height: 90%;
+        background-color: lightgray;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .bio,
+      .skill h1,
+      h3 {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: navy;
+        color: white;
+        height: 100px;
+        bottom: -20px;
+      }
+      .wrap {
+        display: flex;
+        justify-content: space-between;
+      }
+      .tech,
+      .grap {
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="logo">
+          <img
+            src="../PRO1.PNG"
+            alt="my image"
+            width="150px"
+            height="150px"
+            style="border-radius: 50%"
+          />
+          <h2>abbey pentious</h2>
+          <p>specilize in frontend development</p>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="con">
+        <div class="bio">
+          <h1>my biograhy</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas
+            ipsum doloremque facere debitis quam nam repellat facilis laborum
+            laudantium. Illo corrupti minima quos! Saepe error facere facilis
+            veritatis officiis similique.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>Front end developement</h3>
+          <div class="wrap">
+            <div class="one">
+              <h3>Tech Stack</h3>
+
+              <ul class="tech">
+                <li>html</li>
+                <li>css</li>
+                <li>javscript</li>
+                <li>bootstrap</li>
+                <li>jquery</li>
+              </ul>
+            </div>
+            <div class="two">
+              <h3>UI/UX Design</h3>
+              <ol class="grap">
+                <li>Adobe photoshop</li>
+                <li>canva</li>
+                <li>adobe Xd</li>
+                <li>canva</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>copyright &copy; 2026</p>
+        <p>abbeypentious@gmail.com</p>
+      </footer>
+    </section>
+  </body>
+</html>

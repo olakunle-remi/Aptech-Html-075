@@ -1,18 +1,24 @@
 import React from 'react';
-import Header from './component/Header';
-import Box  from './component/Box';
-import UserProfile from './component/UserProfile';
 
-
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Box />
-      <UserProfile />
-     
-    </div>
-  );
+function Counter(){
+  let like = 10;
+  return(
+    <div>
+  <button onClick={() =>{
+    like++;
+    console.log(like);
+  }}>
+    Like
+  </button>
+  <h1>{like}</h1>
+  <h1>{like}</h1>
+  <h1>{like}</h1>
+  </div>
+);
 }
-
+function App(){
+  <section>
+<Counter />
+  </section>
+}
 export default App;

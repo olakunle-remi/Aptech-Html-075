@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>intro</title>
+    <script>
+      function myfun() {
+        document.getElementById("demo2").innerHTML =
+          "changed string by clicking the button";
+      }
+    </script>
+  </head>
+  <body>
+    <!----with the head section script-->
+    <p id="demo2">this text must change by clicking the button</p>
+    <button onclick="myfun()">clickme</button>
+    <br />
+    <!--this code is working with extenal javascript-->
+    <p id="demo3">forma text before clicking</p>
+    <button onclick="externalfun()">fordemo3</button>
+
+    <br />
+    <!---script inside the body---->
+    <p id="demo"></p>
+    <script>
+      document.getElementById("demo").innerHTML = "Hello JavaScript!";
+      document.write("this is written by javascript");
+    </script>
+
+    <script src="myscript.js"></script>
+  </body>
+</html>
